@@ -55,13 +55,12 @@ text = "Привет, мир!"
 ``` 
 Witout chainkovsky the process is shown below:
 ```python
-t = tokenizer(text, padding=True, truncation=True, return_tensors='pt')
 model_output = model(**tokenizer(text, padding=True, truncation=True, return_tensors='pt'))
 print(embeddings(model_output))
 ```
 That's kinda complex, huh? Let's see what chainkovsky offers here:
 ```python
-embeddings = chain() | tokenizer | model | embed
+embeddings = chain() | tokenizer(text, padding=True, truncation=True, return_tensors='pt') | model | embed
 print(embeddings(text))
 ```
 Wow! I'm sure which code you're gonna prefer
